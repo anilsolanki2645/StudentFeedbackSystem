@@ -1,0 +1,154 @@
+{% load static %}
+{% load mathfilters %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <title>REPORT</title>
+        <script src="{% static 'js/html2pdf.bundle.min.js' %}"></script> 
+        <script src="{% static 'js/report.js' %}"></script>
+    </head>
+    <body onload="generatePDF()" id="invoice">
+
+       <table class="table table-borderless" align="center" width="85%" height="1000px">
+        <thead>
+          <tr >
+            <th scope="col" style="text-align:center; font-size:20px; font-weight:bold">{{sem}}</th>
+          </tr>
+          <tr >
+            <th scope="col"><hr></th>
+          </tr>
+        </thead>
+        <tbody style="font-size:18px;text-align:justify">
+          <tr>
+            <td scope="row"><b>Dear {{prof}}</b></td>
+          </tr>
+
+          <tr>
+            <td scope="row"><b>{{sub}}</b></td>
+          </tr>
+          
+          <tr>
+            <td scope="row"><b>{{today}}</b></td>
+          </tr>
+
+          <tr>
+            <td scope="row"><p>A robust feedback system is extremely important not only for the institutions, students but also for the faculty itself.
+                 It provides students with a chance to unhsitant respond to the overall delivery of the subject.</p></td>
+          </tr>
+          <tr>
+            <td scope="row"><u>Understanding the calculation</u></td>
+          </tr>
+
+          <tr>
+            <td scope="row">
+                <ul>
+                    <li>The feedback form is logically divided into 8 questions.</li>
+                    <li>A score of 1-5 is given with 1 being the very poor answer and 5 being the best answer.</li>
+                    <li><b>{{count}}</b> students available, so the calculation contains response of all <b>{{count}}</b> for all question, thereupon total score in all question is added which is divided by the heighest possible score is <b>{{whole_sem_score}}</b>.</li>
+                </ul>
+            </td>
+          </tr>
+
+          <tr>
+            <td scope="row"><p>This semester the average score of all faculties is <b>{{whole_sem_avg|floatformat:'2'}}%</b> and Your average score is <b>{% with total=pr_total_fac|add:pe_total_fac|add:sk_total_fac|add:mt_total_fac|add:ms_total_fac|add:pa_total_fac|add:cs_total_fac|add:ps_total_fac|mul:100 divi=40|mul:count %} {{total|div:divi|floatformat:'2'}}{% endwith %}%</b>,
+            We hope that this would increase in the coming semester.</p></td>
+          </tr>
+
+          <tr>
+            <td scope="row"><p>We hope that this would help all of us in increasing our effectiveness in the delivery of the course.</p></td>
+          </tr>
+
+          <tr>
+            <td scope="row">
+                <ul>
+                    <li>In term of <b>Punctuality and Regularity</b> the average score (of all faculties best) is <b>{{average_pr_all|floatformat:'2'}}%</b> & you scored <u><b>{{pr_total_fac}}</b></u> OR <u><b>{{pr_total_fac_avg|floatformat:'2'}}%.</b></u></li>
+                </ul>
+            </td>
+          </tr>
+
+          <tr>
+            <td scope="row">
+                <ul>
+                    <li>In term of <b>Power of Explanation</b> the average score (of all faculties best) is <b>{{average_pe_all|floatformat:'2'}}%</b> & you scored <u><b>{{pe_total_fac}}</b></u> OR <u><b>{{pe_total_fac_avg|floatformat:'2'}}%.</b></u></li>
+                </ul>
+            </td>
+          </tr>
+
+          <tr>
+            <td scope="row">
+                <ul>
+                    <li>In term of <b>Subject Knowledge</b> the average score (of all faculties best) is <b>{{average_sk_all|floatformat:'2'}}%</b> & you scored <u><b>{{sk_total_fac}}</b></u> OR <u><b>{{sk_total_fac_avg|floatformat:'2'}}%.</b></u></li>
+                </ul>
+            </td>
+          </tr>
+
+          <tr>
+            <td scope="row">
+                <ul>
+                    <li>In term of <b>Method of Teaching</b> the average score (of all faculties best) is <b>{{average_mt_all|floatformat:'2'}}%</b> & you scored <u><b>{{mt_total_fac}}</b></u> OR <u><b>{{mt_total_fac_avg|floatformat:'2'}}%.</b></u></li>
+                </ul>
+            </td>
+          </tr>
+
+          <tr>
+            <td scope="row">
+                <ul>
+                    <li>In term of <b>Motivation of Subject</b> the average score (of all faculties best) is <b>{{average_ms_all|floatformat:'2'}}%</b> & you scored <u><b>{{ms_total_fac}}</b></u> OR <u><b>{{ms_total_fac_avg|floatformat:'2'}}%.</b></u></li>
+                </ul>
+            </td>
+          </tr>
+
+          <tr>
+            <td scope="row">
+                <ul>
+                    <li>In term of <b>Professionalism/Attitude</b> the average score (of all faculties best) is <b>{{average_pa_all|floatformat:'2'}}%</b> & you scored <u><b>{{pa_total_fac}}</b></u> OR <u><b>{{pa_total_fac_avg|floatformat:'2'}}%.</b></u></li>
+                </ul>
+            </td>
+          </tr>
+
+          <tr>
+            <td scope="row">
+                <ul>
+                    <li>In term of <b>Completion of Syllabus</b> the average score (of all faculties best) is <b>{{average_cs_all|floatformat:'2'}}%</b> & you scored <u><b>{{cs_total_fac}}</b></u> OR <u><b>{{cs_total_fac_avg|floatformat:'2'}}%.</b></u></li>
+                </ul>
+            </td>
+          </tr>
+
+          <tr>
+            <td scope="row">
+                <ul>
+                    <li>In term of <b>Paper Solution</b> the average score (of all faculties best) is <b>{{average_ps_all|floatformat:'2'}}%</b> & you scored <u><b>{{ps_total_fac}}</b></u> OR <u><b>{{ps_total_fac_avg|floatformat:'2'}}%.</b></u></li>
+                </ul>
+            </td>
+          </tr>
+
+          <tr>
+            <td scope="row">
+              <p style="font-size:17px">The highest overall (all the faculties) score achieved is <b>{{highest_score_avg|floatformat:'2'}}%</b>. The lowest overall score achieved is <b>{{lowest_score_avg|floatformat:'2'}}%</b>.</p>
+            </td>
+          </tr>
+
+          <tr>
+            <td scope="row">
+            </td>
+          </tr>
+
+          <tr>
+            <td scope="row"><b>HOD</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <b>Chairman</b></td>
+          </tr>
+        </tbody>
+      </table> 
+       
+    </body>
+</html>

@@ -1,0 +1,129 @@
+.carousel-item {
+    height: 65vh;
+    min-height: 350px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+  .anim{
+    animation: fadeIn 7s;
+  }
+
+  .animInstruction{
+    animation: fadeIn 3s;
+  }
+
+  @keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+  }
+  .png
+   {
+    transition: 0.5s;
+   }
+   .png:hover
+   {
+    width: 180px;
+    
+   }
+   .text-w
+   {
+    transition: 0.20s;
+    position: relative; 
+    color: #482948;
+   }
+   .text-w:hover
+   {
+    font-size:22px;
+   }
+   #next
+   {
+    transition: 1.0s;
+    width: 100px;
+   }
+   #next:hover
+   {
+    width: 80px;
+   }
+   .feedback
+   {
+    margin-top:20px;
+    letter-spacing: 1.5px;
+    color: #482948;
+   }
+   nav{
+    text-transform: uppercase;
+    font-family: candara;
+    background-color:#239B56;
+   }
+   #navberboder a
+   {
+    color: black;
+   }
+   #navberboder a:hover
+   {
+    color: #5B2C6F;
+    z-index: 40000;
+   }
+
+   div.pullRightLeft a:before, div.pullRightLeft a:after
+  {
+      position: absolute;
+      width: 2px;
+      height: 100%;
+      top: 0px;
+      content: '';
+      background:silver;
+      color:white;
+      opacity: 0.3;
+      transition: all 0.3s;
+  }
+
+  div.pullRightLeft a:before
+  {
+      left: 0px;
+  } 
+
+  div.pullRightLeft a:after
+  {
+      right: 0px;
+  }
+
+  div.pullRightLeft a:hover:before, div.pullRightLeft a:hover:after
+  {
+      width: 100%;
+      
+  }
+
+  div.container
+  {
+    font-family: Raleway;
+    text-align: center;
+    position: relative;
+    right: 30%;
+  }
+
+  div.container a
+  {
+      color: #5B2C6F;
+      text-decoration: none;
+      font: 20px Raleway;
+      margin: 0px 10px;
+      padding: 10px 10px;
+      position: relative;
+      z-index: 0;
+      cursor: pointer;
+      font-family: candara;
+  }
+
+  .btn{
+    border-radius: 35px;
+    border:10px;
+    border-color:black;
+    box-shadow: 1px 1px 6px black;
+    background-image: linear-gradient(#00ecbc,#007adf);
+    color:black;
+  }

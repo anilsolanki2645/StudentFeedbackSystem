@@ -1,0 +1,430 @@
+<!--DOCTYPE html-->
+<!-- MCA2 Feedback Form -->
+{% load static %}
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>MCA2 Total</title>
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">  
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        
+        <style type="text/css">
+        </style>
+    </head>
+    <body style=" max-width: 100%; overflow-x: hidden;">
+
+      
+        <!--Feedback Table-->
+      <div>
+
+        <table class="table table-hover">
+          <thead align="center">
+            <tr>
+              <th scope="col" colspan="9"><h2>PATEL GROUP OF INSTITUTION<h2></th>
+            </tr>
+            <tr>
+              <th scope="col" colspan="9"><h4>ACADAMIC FEEDBACK FORM-EVEN SEM</h4></th>
+            </tr>
+            <tr>
+              <th scope="col" colspan="9"><h6>MCA-2 SEMESTER</h6></th>
+            </tr>
+          </thead>
+
+          <tbody align="center">
+            <!--Start Student Feedback Form-->
+            
+              <tr>
+                <th scope="col" colspan="9"><h6>FACULTY DETAILS</h6></th>
+              </tr>
+
+              <tr>
+                <th scope="col" colspan="9"><h6 style="color:#2ECC71;">Total Attend Students : {{count_mca2}}</h6></th>
+              </tr>
+
+              <tr>
+                {% for lec in sub %}
+                <th scope="col" colspan="2">Faculty-Subject-Code</th>
+                <th scope="col">{{lec.subject1}}</th>
+                <th scope="col">{{lec.subject2}}</th>
+                <th scope="col">{{lec.subject3}}</th>
+                <th scope="col">{{lec.subject4}}</th>
+                <th scope="col">{{lec.subject5}}</th>
+                <th scope="col">{{lec.subject6}}</th>
+                <th scope="col" style="color:#800000;font-weight:bold">Total</th>
+                {% endfor %}
+              </tr>
+
+              <tr>
+                {% for fname in faculty_name_mca2 %}
+                <th scope="col">SrNo.</th>
+                <th scope="col">Parameters/Faculty</th>
+                <th scope="col">{{fname.subject1}}</th>
+                <th scope="col">{{fname.subject2}}</th>
+                <th scope="col">{{fname.subject3}}</th>
+                <th scope="col">{{fname.subject4}}</th>
+                <th scope="col">{{fname.subject5}}</th>
+                <th scope="col">{{fname.subject6}}</th>
+                <th scope="col"></th>
+                {% endfor %}
+              </tr>
+
+              <!--Punctuality & Regularity-->
+              <tr>
+                <td scope="col">1</td>
+                <td scope="col">Punctuality & Regularity</td>
+                <td scope="col">
+                 <h5>{{additionpr_629401.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionpr_629402.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionpr_629403.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionpr_629404.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionpr_629405.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionpr_629408.total}}</h5>
+                </td>
+
+                <td scope="col" style="color:#800000">
+                    <h5>{{totalpr_mca2}}</h5>
+                </td>
+
+              </tr>
+
+              <!--Power Of Explanation-->
+              <tr>
+                <td scope="col">2</td>
+                <td scope="col">Power Of Explanation</td>
+                <td scope="col">
+                    <h5>{{additionpe_629401.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionpe_629402.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionpe_629403.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionpe_629404.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionpe_629405.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionpe_629408.total}}</h5>
+                </td>
+
+                <td scope="col" style="color:#800000">
+                    <h5>{{totalpe_mca2}}</h5>
+                </td>
+
+              </tr>
+
+              <!--Subject Knowledge-->
+              <tr>
+                <td scope="col">3</td>
+                <td scope="col">Subject Knowledge</td>
+                <td scope="col">
+                    <h5>{{additionsk_629401.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionsk_629402.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionsk_629403.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionsk_629404.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionsk_629405.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionsk_629408.total}}</h5>
+                </td>
+
+                <td scope="col" style="color:#800000">
+                    <h5>{{totalsk_mca2}}</h5>
+                </td>
+
+              </tr>
+
+              <!--Method Of Teaching-->
+              <tr>
+                <td scope="col">4</td>
+                <td scope="col">Method Of Teaching</td>
+                <td scope="col">
+                    <h5>{{additionmt_629401.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionmt_629402.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionmt_629403.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionmt_629404.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionmt_629405.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionmt_629408.total}}</h5>
+                </td>
+
+                <td scope="col" style="color:#800000">
+                    <h5>{{totalmt_mca2}}</h5>
+                </td>
+
+              </tr>
+
+              <!--Motivation Of Subject-->
+              <tr>
+                <td scope="col">5</td>
+                <td scope="col">Motivation Of Subject</td>
+                <td scope="col">
+                    <h5>{{additionms_629401.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionms_629402.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionms_629403.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionms_629404.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionms_629405.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionms_629408.total}}</h5>
+                </td>
+
+                <td scope="col" style="color:#800000">
+                    <h5>{{totalms_mca2}}</h5>
+                </td>
+
+              </tr>
+
+              <!--Professionalisam/Attitude-->
+              <tr>
+                <td scope="col">6</td>
+                <td scope="col">Professionalisam/Attitude</td>
+                <td scope="col">
+                    <h5>{{additionpa_629401.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionpa_629402.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionpa_629403.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionpa_629404.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionpa_629405.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionpa_629408.total}}</h5>
+                </td>
+
+                <td scope="col" style="color:#800000">
+                    <h5>{{totalpa_mca2}}</h5>
+                </td>
+
+              </tr>
+
+              <!--Complition Of Syllabus-->
+              <tr>
+                <td scope="col">7</td>
+                <td scope="col">Complition Of Syllabus</td>
+                <td scope="col">
+                    <h5>{{additioncs_629401.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additioncs_629402.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additioncs_629403.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additioncs_629404.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additioncs_629405.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additioncs_629408.total}}</h5>
+                </td>
+
+                <td scope="col" style="color:#800000">
+                    <h5>{{totalcs_mca2}}</h5>
+                </td>
+
+              </tr>
+
+              <!--Paper Solution-->
+              <tr>
+                <td scope="col">8</td>
+                <td scope="col">Paper Solution</td>
+                <td scope="col">
+                    <h5>{{additionps_629401.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionps_629402.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionps_629403.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionps_629404.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionps_629405.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionps_629408.total}}</h5>
+                </td>
+
+                <td scope="col" style="color:#800000">
+                    <h5>{{totalps_mca2}}</h5>
+                </td>
+
+              </tr>
+
+              <!--Total-->
+              <tr style="color:#800000;font-weight:bold;font-size:20px">
+                <td scope="col">9</td>
+                <td scope="col">Total</td>
+                <td scope="col">
+                    <h5>{{total_629401.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{total_629402.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{total_629403.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{total_629404.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{total_629405.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{total_629408.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{all_total_mca2}}</h5>
+                </td>
+
+              </tr>
+   
+              <tr align="center">
+                <td scope="col">
+                </td>
+                <td scope="col">
+                </td>
+                <td scope="col"> 
+                  <form action="mca2report629401" method="POST">
+                    {% csrf_token %}
+                 <button type="submit" class="btn btn-primary" data-dismiss="modal" style="width:170px"  name="report">Generate Report</button>
+                  </form>
+                </td>
+                <td scope="col"> 
+                    <form action="mca2report629402" method="POST">
+                        {% csrf_token %}
+                   <button type="submit" class="btn btn-primary" data-dismiss="modal" style="width:170px"  name="report">Generate Report</button>
+                    </form>
+                  </td>
+                  <td scope="col"> 
+                    <form action="mca2report629403" method="POST">
+                        {% csrf_token %}
+                   <button type="submit" class="btn btn-primary" data-dismiss="modal" style="width:170px"  name="report">Generate Report</button>
+                    </form>
+                  </td>
+                  <td scope="col"> 
+                    <form action="mca2report629404" method="POST">
+                        {% csrf_token %}
+                   <button type="submit" class="btn btn-primary" data-dismiss="modal" style="width:170px"  name="report">Generate Report</button>
+                    </form>
+                  </td>
+                  <td scope="col"> 
+                    <form action="mca2report629405" method="POST">
+                        {% csrf_token %}
+                   <button type="submit" class="btn btn-primary" data-dismiss="modal" style="width:170px"  name="report">Generate Report</button>
+                    </form>
+                  </td>
+                  <td scope="col"> 
+                    <form action="mca2report629408" method="POST">
+                        {% csrf_token %}
+                   <button type="submit" class="btn btn-primary" data-dismiss="modal" style="width:170px"  name="report">Generate Report</button>
+                    </form>
+                  </td>
+
+                  <td scope="col">
+                </td>
+
+              </tr>
+
+          </tbody>
+
+        </table>
+          
+      </div>
+    </body>
+</html>

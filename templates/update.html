@@ -1,0 +1,1328 @@
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>update</title>
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">  
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        
+        <style type="text/css">
+        .png
+       {
+        transition: 0.5s;
+       }
+       .png:hover
+       {
+        width: 180px;
+        
+       }
+       .nav-link
+       {
+        transition: 0.05s;
+        position: relative; 
+       }
+       .nav-link:hover
+       {
+        font-size:23px;
+       } 
+       
+       .text-white
+       {
+        transition: 0.20s;
+        position: relative;
+       }
+       .text-white:hover
+       {
+        font-size:18px;
+       }
+       .btn2
+       {
+        background-color: transparent;
+        border-color: transparent;
+        position: sticky;
+        
+        
+       }
+       .table
+       {
+        margin-top: 10px;
+        width:70%;
+       }
+       #inputs
+       {
+        
+        width: 250px;
+       }
+       #inputs input
+       {
+         border: 2px solid black;
+         position:relative;
+         top: 0;
+       }
+      #navb{
+        z-index: 10000;
+        position:fixed;
+        top:0;
+        width:100%;
+        height:90px;
+        background-color:aliceblue;
+      }
+      
+
+        </style>
+    </head>
+    <body style="max-width: 100%; overflow-x: hidden;" id = "#loaded">
+      <h5 align="center" style="position:fixed; width:100%;height:50px;background-color:black;color:white;z-index: 10000;font-family:candara;
+    text-transform: uppercase;padding:10px;font-size:25px;letter-spacing:1px;">UPDATE FACULTY DETAILS</h5>
+        <!--navigation Bar-->
+        <br><br>
+          <table class="table table-borderless" align="center" id="uptable">
+
+            <!--------------Update Faculties for IMCA-1-------------->
+
+            <thead align="center">
+              <tr>
+                <th scope="col" colspan="2"><h6 style="font-size: 25px;">IMCA-1 SEMESTER FACULTY DETAILS TO UPDATE</h6></th>
+              </tr>
+            </thead>
+
+            <tbody align="center">
+              <form action="ic1update" method="POST">
+                {% csrf_token %}
+                <tr style="font-size: 20px;">
+                  <th scope="col">Faculty-Subject-Code</th>
+                  <th scope="col">Faculties Name</th>
+                </tr>
+                {% for lec in sub_ic1 %}
+                {% for fname in faculty_name_ic1 %}
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject1}}" name="sem_ic1_code_sub1"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject1}}" name="fac_ic1_sub1"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject2}}" name="sem_ic1_code_sub2"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject2}}" name="fac_ic1_sub2"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject3}}" name="sem_ic1_code_sub3"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject3}}" name="fac_ic1_sub3"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject4}}" name="sem_ic1_code_sub4"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject4}}" name="fac_ic1_sub4"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject5}}" name="sem_ic1_code_sub5"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject5}}" name="fac_ic1_sub5"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+                  {% endfor %}{% endfor %}
+                <tr>
+                  <th scope="col" colspan="2">
+                    <input name="imca3" value="ic3" hidden> 
+                    <button type="submit" class="btn btn-success" data-dismiss="modal" style="width:790px; font-family: ;letter-spacing: 1px;" onclick="update_fac()"><h5 style="margin-top:4px;">UPDATE</h5></button>
+                  </th>
+                </tr>
+              </form>
+            </tbody>
+
+            <!--------------Update Faculties for IMCA-2-------------->
+
+            <thead align="center">
+              <tr>
+                <th scope="col" colspan="2"><h6 style="font-size: 25px;">IMCA-2 SEMESTER FACULTY DETAILS TO UPDATE</h6></th>
+              </tr>
+            </thead>
+
+            <tbody align="center">
+              <form action="ic2update" method="POST">
+                {% csrf_token %}
+                <tr style="font-size: 20px;">
+                  <th scope="col">Faculty-Subject-Code</th>
+                  <th scope="col">Faculties Name</th>
+                </tr>
+                {% for lec in sub_ic2 %}
+                {% for fname in faculty_name_ic2 %}
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject1}}" name="sem_ic2_code_sub1"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject1}}" name="fac_ic2_sub1"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject2}}" name="sem_ic2_code_sub2"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject2}}" name="fac_ic2_sub2"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject3}}" name="sem_ic2_code_sub3"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject3}}" name="fac_ic2_sub3"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject4}}" name="sem_ic2_code_sub4"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject4}}" name="fac_ic2_sub4"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject5}}" name="sem_ic2_code_sub5"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject5}}" name="fac_ic2_sub5"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+                  {% endfor %}{% endfor %}
+                <tr>
+                  <th scope="col" colspan="2">
+                    <input name="imca3" value="ic3" hidden> 
+                    <button type="submit" class="btn btn-success" data-dismiss="modal" style="width:790px; font-family: ;letter-spacing: 1px;" onclick="update_fac()"><h5 style="margin-top:4px;">UPDATE</h5></button>
+                  </th>
+                </tr>
+              </form>
+            </tbody>
+
+            <!--------------Update Faculties for IMCA-3-------------->
+
+            <thead align="center">
+              <tr>
+                <th scope="col" colspan="2"><h6 style="font-size: 25px;">IMCA-3 SEMESTER FACULTY DETAILS TO UPDATE</h6></th>
+              </tr>
+            </thead>
+
+            <tbody align="center">
+              <form action="ic3update" method="POST">
+                {% csrf_token %}
+                <tr style="font-size: 20px;">
+                  <th scope="col">Faculty-Subject-Code</th>
+                  <th scope="col">Faculties Name</th>
+                </tr>
+                {% for lec in sub_ic3 %}
+                {% for fname in faculty_name_ic3 %}
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject1}}" name="sem_ic3_code_sub1"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject1}}" name="fac_ic3_sub1"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject2}}" name="sem_ic3_code_sub2"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject2}}" name="fac_ic3_sub2"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject3}}" name="sem_ic3_code_sub3"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject3}}" name="fac_ic3_sub3"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject4}}" name="sem_ic3_code_sub4"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject4}}" name="fac_ic3_sub4"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject5}}" name="sem_ic3_code_sub5"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject5}}" name="fac_ic3_sub5"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+                  {% endfor %}{% endfor %}
+                <tr>
+                  <th scope="col" colspan="2">
+                    <input name="imca3" value="ic3" hidden> 
+                    <button type="submit" class="btn btn-success" data-dismiss="modal" style="width:790px; font-family: ;letter-spacing: 1px;" onclick="update_fac()"><h5 style="margin-top:4px;">UPDATE</h5></button>
+                  </th>
+                </tr>
+              </form>
+            </tbody>
+
+            <!--------------Update Faculties for IMCA-4-------------->
+
+            <thead align="center">
+              <tr>
+                <th scope="col" colspan="2"><h6 style="font-size: 25px;">IMCA-4 SEMESTER FACULTY DETAILS TO UPDATE</h6></th>
+              </tr>
+            </thead>
+
+            <tbody align="center">
+              <form action="ic4update" method="POST">
+                {% csrf_token %}
+                <tr style="font-size: 20px;">
+                  <th scope="col">Faculty-Subject-Code</th>
+                  <th scope="col">Faculties Name</th>
+                </tr>
+                {% for lec in sub_ic4 %}
+                {% for fname in faculty_name_ic4 %}
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject1}}" name="sem_ic4_code_sub1"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject1}}" name="fac_ic4_sub1"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject2}}" name="sem_ic4_code_sub2"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject2}}" name="fac_ic4_sub2"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject3}}" name="sem_ic4_code_sub3"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject3}}" name="fac_ic4_sub3"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject4}}" name="sem_ic4_code_sub4"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject4}}" name="fac_ic4_sub4"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject5}}" name="sem_ic4_code_sub5"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject5}}" name="fac_ic4_sub5"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+                  {% endfor %}{% endfor %}
+                <tr>
+                  <th scope="col" colspan="2">
+                    <input name="imca3" value="ic3" hidden> 
+                    <button type="submit" class="btn btn-success" data-dismiss="modal" style="width:790px; font-family: ;letter-spacing: 1px;" onclick="update_fac()"><h5 style="margin-top:4px;">UPDATE</h5></button>
+                  </th>
+                </tr>
+              </form>
+            </tbody>
+
+            <!--------------Update Faculties for IMCA-5-------------->
+
+            <thead align="center">
+              <tr>
+                <th scope="col" colspan="2"><h6 style="font-size: 25px;">IMCA-5 SEMESTER FACULTY DETAILS TO UPDATE</h6></th>
+              </tr>
+            </thead>
+
+            <tbody align="center">
+              <form action="ic5update" method="POST">
+                {% csrf_token %}
+                <tr style="font-size: 20px;">
+                  <th scope="col">Faculty-Subject-Code</th>
+                  <th scope="col">Faculties Name</th>
+                </tr>
+                {% for lec in sub_ic5 %}
+                {% for fname in faculty_name_ic5 %}
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject1}}" name="sem_ic5_code_sub1"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject1}}" name="fac_ic5_sub1"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject2}}" name="sem_ic5_code_sub2"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject2}}" name="fac_ic5_sub2"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject3}}" name="sem_ic5_code_sub3"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject3}}" name="fac_ic5_sub3"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject4}}" name="sem_ic5_code_sub4"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject4}}" name="fac_ic5_sub4"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject5}}" name="sem_ic5_code_sub5"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject5}}" name="fac_ic5_sub5"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+                  {% endfor %}{% endfor %}
+                <tr>
+                  <th scope="col" colspan="2">
+                    <input name="imca3" value="ic3" hidden> 
+                    <button type="submit" class="btn btn-success" data-dismiss="modal" style="width:790px; font-family: ;letter-spacing: 1px;" onclick="update_fac()"><h5 style="margin-top:4px;">UPDATE</h5></button>
+                  </th>
+                </tr>
+              </form>
+            </tbody>
+
+            <!--------------Update Faculties for IMCA-6-------------->
+
+            <thead align="center">
+              <tr>
+                <th scope="col" colspan="2"><h6 style="font-size: 25px;">IMCA-6 SEMESTER FACULTY DETAILS TO UPDATE</h6></th>
+              </tr>
+            </thead>
+
+            <tbody align="center">
+              <form action="ic6update" method="POST">
+                {% csrf_token %}
+                <tr style="font-size: 20px;">
+                  <th scope="col">Faculty-Subject-Code</th>
+                  <th scope="col">Faculties Name</th>
+                </tr>
+                {% for lec in sub_ic6 %}
+                {% for fname in faculty_name_ic6 %}
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject1}}" name="sem_ic6_code_sub1"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject1}}" name="fac_ic6_sub1"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject2}}" name="sem_ic6_code_sub2"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject2}}" name="fac_ic6_sub2"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject3}}" name="sem_ic6_code_sub3"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject3}}" name="fac_ic6_sub3"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject4}}" name="sem_ic6_code_sub4"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject4}}" name="fac_ic6_sub4"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject5}}" name="sem_ic6_code_sub5"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject5}}" name="fac_ic6_sub5"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+                  {% endfor %}{% endfor %}
+                <tr>
+                  <th scope="col" colspan="2">
+                    <input name="imca3" value="ic3" hidden> 
+                    <button type="submit" class="btn btn-success" data-dismiss="modal" style="width:790px; font-family: ;letter-spacing: 1px;" onclick="update_fac()"><h5 style="margin-top:4px;">UPDATE</h5></button>
+                  </th>
+                </tr>
+              </form>
+            </tbody>
+
+            <!--------------Update Faculties for IMCA-7-------------->
+
+            <thead align="center">
+              <tr>
+                <th scope="col" colspan="2"><h6 style="font-size: 25px;">IMCA-7 SEMESTER FACULTY DETAILS TO UPDATE</h6></th>
+              </tr>
+            </thead>
+
+            <tbody align="center">
+              <form action="ic7update" method="POST">
+                {% csrf_token %}
+                <tr style="font-size: 20px;">
+                  <th scope="col">Faculty-Subject-Code</th>
+                  <th scope="col">Faculties Name</th>
+                </tr>
+                {% for lec in sub_ic7 %}
+                {% for fname in faculty_name_ic7 %}
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject1}}" name="sem_ic7_code_sub1"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject1}}" name="fac_ic7_sub1"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject2}}" name="sem_ic7_code_sub2"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject2}}" name="fac_ic7_sub2"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject3}}" name="sem_ic7_code_sub3"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject3}}" name="fac_ic7_sub3"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject4}}" name="sem_ic7_code_sub4"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject4}}" name="fac_ic7_sub4"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject5}}" name="sem_ic7_code_sub5"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject5}}" name="fac_ic7_sub5"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+                  {% endfor %}{% endfor %}
+                <tr>
+                  <th scope="col" colspan="2">
+                    <input name="imca3" value="ic3" hidden> 
+                    <button type="submit" class="btn btn-success" data-dismiss="modal" style="width:790px; font-family: ;letter-spacing: 1px;" onclick="update_fac()"><h5 style="margin-top:4px;">UPDATE</h5></button>
+                  </th>
+                </tr>
+              </form>
+            </tbody>
+
+            <!--------------Update Faculties for IMCA-8-------------->
+
+            <thead align="center">
+              <tr>
+                <th scope="col" colspan="2"><h6 style="font-size: 25px;">IMCA-8 SEMESTER FACULTY DETAILS TO UPDATE</h6></th>
+              </tr>
+            </thead>
+
+            <tbody align="center">
+              <form action="ic8update" method="POST">
+                {% csrf_token %}
+                <tr style="font-size: 20px;">
+                  <th scope="col">Faculty-Subject-Code</th>
+                  <th scope="col">Faculties Name</th>
+                </tr>
+                {% for lec in sub_ic8 %}
+                {% for fname in faculty_name_ic8 %}
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject1}}" name="sem_ic8_code_sub1"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject1}}" name="fac_ic8_sub1"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject2}}" name="sem_ic8_code_sub2"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject2}}" name="fac_ic8_sub2"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject3}}" name="sem_ic8_code_sub3"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject3}}" name="fac_ic8_sub3"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject4}}" name="sem_ic8_code_sub4"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject4}}" name="fac_ic8_sub4"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject5}}" name="sem_ic8_code_sub5"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject5}}" name="fac_ic8_sub5"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject6}}" name="sem_ic8_code_sub6"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject6}}" name="fac_ic8_sub6"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+                  {% endfor %}{% endfor %}
+                <tr>
+                  <th scope="col" colspan="2">
+                    <input name="imca3" value="ic3" hidden> 
+                    <button type="submit" class="btn btn-success" data-dismiss="modal" style="width:790px; font-family: ;letter-spacing: 1px;" onclick="update_fac()"><h5 style="margin-top:4px;">UPDATE</h5></button>
+                  </th>
+                </tr>
+              </form>
+            </tbody>
+
+            <!--------------Update Faculties for IMCA-9-------------->
+
+            <thead align="center">
+              <tr>
+                <th scope="col" colspan="2"><h6 style="font-size: 25px;">IMCA-9 SEMESTER FACULTY DETAILS TO UPDATE</h6></th>
+              </tr>
+            </thead>
+
+            <tbody align="center">
+              <form action="ic9update" method="POST">
+                {% csrf_token %}
+                <tr style="font-size: 20px;">
+                  <th scope="col">Faculty-Subject-Code</th>
+                  <th scope="col">Faculties Name</th>
+                </tr>
+                {% for lec in sub_ic9 %}
+                {% for fname in faculty_name_ic9 %}
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject1}}" name="sem_ic9_code_sub1"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject1}}" name="fac_ic9_sub1"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject2}}" name="sem_ic9_code_sub2"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject2}}" name="fac_ic9_sub2"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject3}}" name="sem_ic9_code_sub3"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject3}}" name="fac_ic9_sub3"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject4}}" name="sem_ic9_code_sub4"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject4}}" name="fac_ic9_sub4"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject5}}" name="sem_ic9_code_sub5"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject5}}" name="fac_ic9_sub5"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject6}}" name="sem_ic9_code_sub6"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject6}}" name="fac_ic9_sub6"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+                  {% endfor %}{% endfor %}
+                <tr>
+                  <th scope="col" colspan="2">
+                    <input name="imca3" value="ic3" hidden> 
+                    <button type="submit" class="btn btn-success" data-dismiss="modal" style="width:790px; font-family: ;letter-spacing: 1px;" onclick="update_fac()"><h5 style="margin-top:4px;">UPDATE</h5></button>
+                  </th>
+                </tr>
+              </form>
+            </tbody>
+
+            <!--------------Update Faculties for IMCA-10-------------->
+
+            <thead align="center">
+              <tr>
+                <th scope="col" colspan="2"><h6 style="font-size: 25px;">IMCA-10 SEMESTER FACULTY DETAILS TO UPDATE</h6></th>
+              </tr>
+            </thead>
+
+            <tbody align="center">
+              <form action="ic10update" method="POST">
+                {% csrf_token %}
+                <tr style="font-size: 20px;">
+                  <th scope="col">Faculty-Subject-Code</th>
+                  <th scope="col">Faculties Name</th>
+                </tr>
+                {% for lec in sub_ic10 %}
+                {% for fname in faculty_name_ic10 %}
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject1}}" name="sem_ic10_code_sub1"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject1}}" name="fac_ic10_sub1"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+                {% endfor %}{% endfor %}
+                <tr>
+                  <th scope="col" colspan="2">
+                    <input name="imca3" value="ic3" hidden> 
+                    <button type="submit" class="btn btn-success" data-dismiss="modal" style="width:790px; font-family: ;letter-spacing: 1px;" onclick="update_fac()"><h5 style="margin-top:4px;">UPDATE</h5></button>
+                  </th>
+                </tr>
+              </form>
+            </tbody>
+
+            <!--------------Update Faculties for MCA-1-------------->
+
+            <thead align="center">
+              <tr>
+                <th scope="col" colspan="2"><h6 style="font-size: 25px;">MCA-1 SEMESTER FACULTY DETAILS TO UPDATE</h6></th>
+              </tr>
+            </thead>
+
+            <tbody align="center">
+              <form action="mca1update" method="POST">
+                {% csrf_token %}
+                <tr style="font-size: 20px;">
+                  <th scope="col">Faculty-Subject-Code</th>
+                  <th scope="col">Faculties Name</th>
+                </tr>
+                {% for lec in sub_mca1 %}
+                {% for fname in faculty_name_mca1 %}
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject1}}" name="sem_mca1_code_sub1"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject1}}" name="fac_mca1_sub1"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject2}}" name="sem_mca1_code_sub2"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject2}}" name="fac_mca1_sub2"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject3}}" name="sem_mca1_code_sub3"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject3}}" name="fac_mca1_sub3"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject4}}" name="sem_mca1_code_sub4"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject4}}" name="fac_mca1_sub4"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject5}}" name="sem_mca1_code_sub5"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject5}}" name="fac_mca1_sub5"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject6}}" name="sem_mca1_code_sub6"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject6}}" name="fac_mca1_sub6"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+                  {% endfor %}{% endfor %}
+                <tr>
+                  <th scope="col" colspan="2">
+                    <input name="imca3" value="ic3" hidden> 
+                    <button type="submit" class="btn btn-success" data-dismiss="modal" style="width:790px; font-family: ;letter-spacing: 1px;" onclick="update_fac()"><h5 style="margin-top:4px;">UPDATE</h5></button>
+                  </th>
+                </tr>
+              </form>
+            </tbody>
+
+            <!--------------Update Faculties for MCA-2-------------->
+
+            <thead align="center">
+              <tr>
+                <th scope="col" colspan="2"><h6 style="font-size: 25px;">MCA-2 SEMESTER FACULTY DETAILS TO UPDATE</h6></th>
+              </tr>
+            </thead>
+
+            <tbody align="center">
+              <form action="mca2update" method="POST">
+                {% csrf_token %}
+                <tr style="font-size: 20px;">
+                  <th scope="col">Faculty-Subject-Code</th>
+                  <th scope="col">Faculties Name</th>
+                </tr>
+                {% for lec in sub_mca2 %}
+                {% for fname in faculty_name_mca2 %}
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject1}}" name="sem_mca2_code_sub1"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject1}}" name="fac_mca2_sub1"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject2}}" name="sem_mca2_code_sub2"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject2}}" name="fac_mca2_sub2"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject3}}" name="sem_mca2_code_sub3"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject3}}" name="fac_mca2_sub3"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject4}}" name="sem_mca2_code_sub4"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject4}}" name="fac_mca2_sub4"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject5}}" name="sem_mca2_code_sub5"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject5}}" name="fac_mca2_sub5"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject6}}" name="sem_mca2_code_sub6"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject6}}" name="fac_mca2_sub6"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+                  {% endfor %}{% endfor %}
+                <tr>
+                  <th scope="col" colspan="2">
+                    <input name="imca3" value="ic3" hidden> 
+                    <button type="submit" class="btn btn-success" data-dismiss="modal" style="width:790px; font-family: ;letter-spacing: 1px;" onclick="update_fac()"><h5 style="margin-top:4px;">UPDATE</h5></button>
+                  </th>
+                </tr>
+              </form>
+            </tbody>
+
+            <!--------------Update Faculties for MCA-3-------------->
+
+            <thead align="center">
+              <tr>
+                <th scope="col" colspan="2"><h6 style="font-size: 25px;">MCA-3 SEMESTER FACULTY DETAILS TO UPDATE</h6></th>
+              </tr>
+            </thead>
+
+            <tbody align="center">
+              <form action="mca3update" method="POST">
+                {% csrf_token %}
+                <tr style="font-size: 20px;">
+                  <th scope="col">Faculty-Subject-Code</th>
+                  <th scope="col">Faculties Name</th>
+                </tr>
+                {% for lec in sub_mca3 %}
+                {% for fname in faculty_name_mca3 %}
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject1}}" name="sem_mca3_code_sub1"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject1}}" name="fac_mca3_sub1"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject2}}" name="sem_mca3_code_sub2"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject2}}" name="fac_mca3_sub2"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject3}}" name="sem_mca3_code_sub3"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject3}}" name="fac_mca3_sub3"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject4}}" name="sem_mca3_code_sub4"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject4}}" name="fac_mca3_sub4"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject5}}" name="sem_mca3_code_sub5"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject5}}" name="fac_mca3_sub5"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject6}}" name="sem_mca3_code_sub6"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject6}}" name="fac_mca3_sub6"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+                  {% endfor %}{% endfor %}
+                <tr>
+                  <th scope="col" colspan="2">
+                    <input name="imca3" value="ic3" hidden> 
+                    <button type="submit" class="btn btn-success" data-dismiss="modal" style="width:790px; font-family: ;letter-spacing: 1px;" onclick="update_fac()"><h5 style="margin-top:4px;">UPDATE</h5></button>
+                  </th>
+                </tr>
+              </form>
+            </tbody>
+
+            <!--------------Update Faculties for MCA-4-------------->
+
+            <thead align="center">
+              <tr>
+                <th scope="col" colspan="2"><h6 style="font-size: 25px;">MCA-4 SEMESTER FACULTY DETAILS TO UPDATE</h6></th>
+              </tr>
+            </thead>
+
+            <tbody align="center">
+              <form action="mca4update" method="POST">
+                {% csrf_token %}
+                <tr style="font-size: 20px;">
+                  <th scope="col">Faculty-Subject-Code</th>
+                  <th scope="col">Faculties Name</th>
+                </tr>
+                {% for lec in sub_mca4 %}
+                {% for fname in faculty_name_mca4 %}
+                <tr>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{lec.subject1}}" name="sem_mca4_code_sub1"  autocomplete="off">
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="input-group mb-3" id="inputs">
+                      <input type="text" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{fname.subject1}}" name="fac_mca4_sub1"  autocomplete="off">
+                    </div>
+                  </th>
+                </tr>
+                  {% endfor %}{% endfor %}
+                <tr>
+                  <th scope="col" colspan="2">
+                    <input name="imca3" value="ic3" hidden> 
+                    <button type="submit" class="btn btn-success" data-dismiss="modal" style="width:790px; font-family: ;letter-spacing: 1px;" onclick="update_fac()"><h5 style="margin-top:4px;">UPDATE</h5></button>
+                  </th>
+                </tr>
+              </form>
+            </tbody>
+
+        </table>
+    </body>
+
+    <script type="text/javascript">
+
+      function update_fac(){
+        alert("Updated Successfully!!!");
+      }
+
+    </script>
+
+</html>
+            

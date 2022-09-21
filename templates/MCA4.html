@@ -1,0 +1,323 @@
+<!--DOCTYPE html-->
+<!-- MCA4 Feedback Form -->
+{% load static %}
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>MCA4</title>
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">  
+        <link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'css/feedback.css' %}" rel="stylesheet" type="text/css">
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/feedback.js' %}"></script>
+        
+        <style type="text/css">
+          .bg-image{
+            background-image: url('{% static 'image/j.jpg' %}'); 
+            height:160%;
+            width:100%;
+            background-position:center;
+            background-repeat:no-repeat;
+            background-size:cover;
+          }
+        </style>
+    </head>
+    <body style=" max-width: 100%; overflow-x: hidden;">
+      <div class="bg-image">
+      <!--navigation Bar-->
+      <div class="nav" style="background-image:url('{% static 'image/jjj.jpg' %}');background-repeat: no-repeat;
+      background-size: cover;">
+        <input type="checkbox" id="nav-check">
+        <div class="nav-header">
+          <div class="nav-title">
+            <img src="{% static 'image/pgi.png' %}" width="150px" style="margin-left:17px;margin-right:17px" class="png">
+          </div>
+        </div>
+        <div class="nav-btn">
+          <label for="nav-check" >
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+        </div>
+        
+        <div class="nav-links" id="navhover"style="font-family: candara; font-size: 20px;text-transform: uppercase;">
+          <a aria-current="page" href="/">Home</a>
+          <a href="" data-bs-toggle="modal" data-bs-target="#studentModal">Student</a>
+          <a href="developer">Developer</a>
+         
+        </div>
+      </div>
+      <!-- nav bar complete-->
+      <!-- student Modal -->
+      <div class="modal fade" id="studentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top: 10%;">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Student Login</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            
+            <div class="modal-body">
+              
+              <!-- input and selection list -->
+      
+            <form action="{{sem}}" method="POST">
+              {% csrf_token %}
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default" style="margin-right:8px">Student id</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" id="enroll" name="enrollment" maxlength="4" minlength="4" pattern="[0-9]+" autocomplete="off">
+              </div>
+      
+              <!-- for sem select -->
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01" style="margin-right:8px;width:103px">Sem</label>
+                </div>
+                <!--h1> 
+                        {{sem}}  -->
+                        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" id="enroll" value="{{sem}}" readonly>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" id="next" data-dismiss="modal">Next</button>
+              </div>
+            </form>
+          </div>
+          </div>
+        </div>
+      </div>
+      
+
+
+<br>
+        <!--Feedback Table-->
+      <div>
+
+        <table class="table table-borderless" style="width: 60%;" align="center">
+          <thead align="center">
+            <tr>
+              <th scope="col" colspan="3"><h2>PATEL GROUP OF INSTITUTION<h2></th>
+            </tr>
+            <tr>
+              <th scope="col" colspan="3"><h4>ACADAMIC FEEDBACK FORM-EVEN SEM</h4></th>
+            </tr>
+            <tr>
+              <th scope="col" colspan="3"><h6>Please provide your objective rating for the following perameters from 1 to 5 as per following scale without any bias</h6></th>
+            </tr>
+            <tr>
+              <th scope="col" colspan="3"><h5>5-Excellent&nbsp;&nbsp;|&nbsp;&nbsp;4-Very Good&nbsp;&nbsp;|&nbsp;&nbsp;3-Good&nbsp;&nbsp;|&nbsp;&nbsp;2-Poor&nbsp;&nbsp;|&nbsp;&nbsp;1-Very Poor</h5></th>
+            </tr>
+            <tr>
+              <th scope="col" colspan="3"><h6>MCA-4 SEMESTER</h6></th>
+            </tr>
+          </thead>
+
+          <tbody align="center">
+            <!--Start Student Feedback Form-->
+            <form action="feedbackmca4" method="POST">
+              {% csrf_token %}
+              <tr>
+                <th scope="col" colspan="3"><h6>FACULTY DETAILS</h6></th>
+              </tr>
+
+              <tr>
+                <th scope="col" colspan="3">
+                  <h6 align="center">Your id is</h6>
+                  <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" id="enroll" value="{{userid}}" name="std_id" style="text-align:center; border: 0px;background-color: transparent; font-weight:bold" readonly>
+              <hr width="100%" size="10px">
+           </th>
+          </tr>
+
+              <tr>
+                {% for lec in sub %}
+                <th scope="col"></th>
+                <th scope="col" style=" position: relative;left: 9%;">Faculty-Subject-Code</th>
+                <th scope="col" >{{lec.subject1}}</th>
+                
+                {% endfor %}
+              </tr>
+
+              <tr>
+                {% for fname in faculty_name_mca4 %}
+                <th scope="col" style=" position: relative;left: 9%;">SrNo.</th>
+                <th scope="col" style=" position: relative;left: 9%;">Parameters/Faculty</th>
+                <th scope="col">{{fname.subject1}}</th>
+                
+                
+                {% endfor %}
+              </tr>
+
+              <!--Punctuality & Regularity-->
+              <tr>
+                <td scope="col" style=" position: relative;left: 9%;">1</td>
+                <td scope="col" style=" position: relative;left: 9%;">Punctuality & Regularity</td>
+                <td scope="col">
+                  <div class="input-group mb-3" style=" position: relative;left: 45%;">
+                    <select name="pr649401" class="custom-select" id="inputGroupSelect01" style="width:40px;" required>
+                      <option selected disabled></option>
+                      <option value="5" >5</option>
+                      <option value="4" >4</option>
+                      <option value="3" >3</option>
+                      <option value="2" >2</option>
+                      <option value="1" >1</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+
+              <!--Power Of Explanation-->
+              <tr>
+                <td scope="col" style=" position: relative;left: 9%;">2</td>
+                <td scope="col" style=" position: relative;left: 9%;">Power Of Explanation</td>
+                
+                <td scope="col">
+                  <div class="input-group mb-3" style=" position: relative;left: 45%;">
+                    <select name="pe649401" class="custom-select" id="inputGroupSelect01" style="width:40px;" required>
+                      <option selected disabled></option>
+                      <option value="5" >5</option>
+                      <option value="4" >4</option>
+                      <option value="3" >3</option>
+                      <option value="2" >2</option>
+                      <option value="1" >1</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+
+              <!--Subject Knowledge-->
+              <tr>
+                <td scope="col" style=" position: relative;left: 9%;">3</td>
+                <td scope="col" style=" position: relative;left: 9%;">Subject Knowledge</td>
+                <td scope="col">
+                  <div class="input-group mb-3" style=" position: relative;left: 45%;">
+                    <select name="sk649401" class="custom-select" id="inputGroupSelect01" style="width:40px;" required>
+                      <option selected disabled></option>
+                      <option value="5" >5</option>
+                      <option value="4" >4</option>
+                      <option value="3" >3</option>
+                      <option value="2" >2</option>
+                      <option value="1" >1</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+
+              <!--Method Of Teaching-->
+              <tr>
+                <td scope="col" style=" position: relative;left: 9%;">4</td>
+                <td scope="col" style=" position: relative;left: 9%;">Method Of Teaching</td>
+                <td scope="col">
+                  <div class="input-group mb-3" style=" position: relative;left: 45%;">
+                    <select name="mt649401" class="custom-select" id="inputGroupSelect01" style="width:40px;" required>
+                      <option selected disabled></option>
+                      <option value="5" >5</option>
+                      <option value="4" >4</option>
+                      <option value="3" >3</option>
+                      <option value="2" >2</option>
+                      <option value="1" >1</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+
+              <!--Motivation Of Subject-->
+              <tr>
+                <td scope="col" style=" position: relative;left: 9%;">5</td>
+                <td scope="col" style=" position: relative;left: 9%;">Motivation Of Subject</td>
+                <td scope="col">
+                  <div class="input-group mb-3" style=" position: relative;left: 45%;">
+                    <select name="ms649401" class="custom-select" id="inputGroupSelect01" style="width:40px;" required>
+                      <option selected disabled></option>
+                      <option value="5" >5</option>
+                      <option value="4" >4</option>
+                      <option value="3" >3</option>
+                      <option value="2" >2</option>
+                      <option value="1" >1</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+
+              <!--Professionalisam/Attitude-->
+              <tr>
+                <td scope="col" style=" position: relative;left: 9%;">6</td>
+                <td scope="col" style=" position: relative;left: 9%;">Professionalisam/Attitude</td>
+                <td scope="col">
+                  <div class="input-group mb-3" style=" position: relative;left: 45%;">
+                    <select name="pa649401" class="custom-select" id="inputGroupSelect01" style="width:40px;" required>
+                      <option selected disabled></option>
+                      <option value="5" >5</option>
+                      <option value="4" >4</option>
+                      <option value="3" >3</option>
+                      <option value="2" >2</option>
+                      <option value="1" >1</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+
+              <!--Complition Of Syllabus-->
+              <tr>
+                <td scope="col" style=" position: relative;left: 9%;">7</td>
+                <td scope="col" style=" position: relative;left: 9%;">Complition Of Syllabus</td>
+                <td scope="col">
+                  <div class="input-group mb-3" style=" position: relative;left: 45%;">
+                    <select name="cs649401" class="custom-select" id="inputGroupSelect01" style="width:40px;" required>
+                      <option selected disabled></option>
+                      <option value="5" >5</option>
+                      <option value="4" >4</option>
+                      <option value="3" >3</option>
+                      <option value="2" >2</option>
+                      <option value="1" >1</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+
+              <!--Paper Solution-->
+              <tr>
+                <td scope="col" style=" position: relative;left: 9%;">8</td>
+                <td scope="col" style=" position: relative;left: 9%;">Paper Solution</td>
+                <td scope="col">
+                  <div class="input-group mb-3" style=" position: relative;left: 45%;">
+                    <select name="ps649401" class="custom-select" id="inputGroupSelect01" style="width:40px;" required>
+                      <option selected disabled></option>
+                      <option value="5" >5</option>
+                      <option value="4" >4</option>
+                      <option value="3" >3</option>
+                      <option value="2" >2</option>
+                      <option value="1" >1</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td scope="col" colspan="3">
+                  <button type="submit" class="btn btn-success" data-dismiss="modal" style="width:100%;letter-spacing:1px;"><h5 class="text-b">Submit</h5></button>
+                </td>
+              </tr>
+            </form>
+          </tbody>
+        </table>  
+      </div>
+      
+<!-- For Footer -->
+<!-- Remove the container if you want to extend the Footer to full width. -->
+<div>
+  <!-- Footer -->
+  <footer class="text-center text-b" >
+    <!-- Copyright -->
+    <div class="text-center p-4" style="background-color: transparent;font-size:24px;font-family:candara;letter-spacing:1px;">
+      © 2022 Copyright :
+      <a class="text-b" href="developer" style="text-decoration: none;font-family:candara;letter-spacing:1px;color:black">Hasmukh & Anil</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+</div>
+</div>
+</body>
+</html>

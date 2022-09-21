@@ -1,0 +1,586 @@
+
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>ADMIN PANEL</title>
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">  
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        
+        <style type="text/css">
+        .png
+       {
+        transition: 0.5s;
+       }
+       .png:hover
+       {
+        width: 180px;
+        
+       }
+       .text-white
+       {
+        transition: 0.25s;
+        position: relative;
+       }
+       .text-white:hover
+       {
+        font-size:20px;
+       }
+       .btn2
+       {
+        background-color: transparent;
+        border-color: transparent;
+        position: sticky;        
+       }
+       nav{
+        z-index: 10000;
+        position:fixed;
+        top:0;
+        width:100%;
+        height:90px;
+        background-color:aliceblue;
+      }
+
+      div.pullRightLeft a:before, div.pullRightLeft a:after
+      {
+          position: absolute;
+          width: 2px;
+          height: 100%;
+          top: 0px;
+          content: '';
+          background:silver;
+          color:white;
+          opacity: 0.3;
+          transition: all 0.3s;
+      }
+
+      div.pullRightLeft a:before
+      {
+          left: 0px;
+      } 
+
+      div.pullRightLeft a:after
+      {
+          right: 0px;
+      }
+
+      div.pullRightLeft a:hover:before, div.pullRightLeft a:hover:after
+      {
+          width: 100%;
+          
+      }
+
+      div.container
+      {
+        font-family: Raleway;
+        text-align: center;
+        position: relative;
+        display: flex;
+      }
+
+      div.container a
+      {
+          color: black;
+          text-decoration: none;
+          font: 20px Raleway;
+          margin: 0px 10px;
+          padding: 10px 10px;
+          position: relative;
+          z-index: 0;
+          cursor: pointer;
+          font-family: candara;
+      }
+      .btn{
+        border-radius: 50px;
+        border:10px;
+        border-color:black;
+        box-shadow: 1px 1px 6px black;
+        background-image: linear-gradient(#00ecbc,#007adf);
+        color:black;
+      }
+
+      .bg-image{
+        background-image: url('{% static 'image/ggg.jpg' %}'); 
+        height:1020px;
+        background-position:center;
+        background-repeat:no-repeat;
+        background-size:cover;
+      }
+        </style>
+    </head>
+    <body style="max-width: 100%; overflow-x: hidden;" id="#loaded">
+        <!--navigation Bar-->
+        <div class="bg-image">
+        <nav class="navbar navbar-expand-lg" style="position:sticky;top:0; width:100%;height:90px; background-color:aliceblue;">
+            <div class="container-fluid">
+                <img src="{% static 'image/pgi.png' %}" width="150px" style="margin-left:17px;margin-right:17px" class="png">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="container deepOrange pullRightLeft" style="font-size:22px;margin-top:16px;">
+              <button class="btn2" style="margin-top:-11px;">
+                <a aria-current="page" href="/">Home</a>
+              </button>
+              <button class="btn2" style="margin-top:-11px;">
+                <a href="developer">Developer</a>
+              </button>
+              <button class="btn2" style="margin-top:-11px;">
+                <a href="" data-bs-toggle="modal" data-bs-target="#passwordModal">Forgot</a>
+              </button>
+              <form action="update_fac" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn2" style="margin-top:10px;">
+                  <a>Update</a>
+                </button>
+              </form>
+            <form action="logout" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="btn2" style="margin-top:10px;"><a>Logout</a></button>
+            </form>
+            </div>
+          </div>
+          </div>
+        <!-- admin or student button
+        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#studentModal" style="margin-right:10px">Student</button>
+        <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#adminModal" style="margin-right:20px">Admin</button>
+       -->
+      </nav>
+
+      <!-- Admin password Modal -->
+
+<div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index:11000 ; margin-top: 10%;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Set New Password</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="change_password" method="POST">
+          {% csrf_token %}
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default" style="margin-right:8px">username</span>
+          </div>
+          <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" id="enroll" name="username" value="{{show.username}}" autocomplete="off" required>
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default" style="margin-right:8px">password</span>
+          </div>
+          <input type="password" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" id="myinput" name="password" value="{{show.password}}" required>
+        </div>
+        
+        <input style="height:18px; width:18px" type="checkbox" onclick="myFunction()">  Show Password
+
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" data-dismiss="modal" onclick="change_password()">Change</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+    <h5 align="center" style="position:fixed; width:100%;  background-color:black;color:white;z-index: 10000;font-family:candara;
+    text-transform: uppercase;">Admin Panel</h5>
+      <BR><br>
+      <div>
+        <table class="table table-borderless" style="width:70%" align="center" style="background-color: transparent;">
+          <tbody>
+      <form action="serve" method="POST">
+        {% csrf_token %}
+        <tr>
+          
+          <td scope="col" align="center"> 
+            <h5 style="color:white">SHOW TOTAL</h5>
+          </td>
+
+          <td scope="col" rowspan="15" align="center">
+            <label style="margin-top:100px;color:white"><h5><u>SELECT SEMESTER</u></h5></label><br>
+            <div class="input-group mb-3" style="margin-left:70px">
+              <select name="semserve" class="custom-select" id="inputGroupSelect01" style="width:300px;height:44px;border-radius:50px;border:2px;padding:10px;" aria-placeholder="Choose" required>
+                <option  selected disabled>Choose...</option>
+                <option value="IMCA1" >IMCA-1</option>
+                <option value="IMCA2" >IMCA-2</option>
+                <option value="IMCA3" >IMCA-3</option>
+                <option value="IMCA4" >IMCA-4</option>
+                <option value="IMCA5" >IMCA-5</option>
+                <option value="IMCA6" >IMCA-6</option>
+                <option value="IMCA7" >IMCA-7</option>
+                <option value="IMCA8" >IMCA-8</option>
+                <option value="IMCA9" >IMCA-9</option>
+                <option value="IMCA10" >IMCA-10</option>
+                <option value="MCA1" >MCA-1</option>
+                <option value="MCA2" >MCA-2</option>
+                <option value="MCA3" >MCA-3</option>
+                <option value="MCA4" >MCA-4</option>
+              </select>
+            </div>
+           
+            <button type="submit" class="btn btn-success" data-dismiss="modal" style="width:300px;height:45px;border-radius:50px;font-size:22px;background-image:linear-gradient(#92fe9d,#00c9ff);">Serve</button>
+          </form>
+            <br><br><br><br>
+            <!--img src="{% static 'image/p.png' %}" width="300px" style="margin-left:17px;margin-right:17px" class="png"-->
+            <form action="insert_student" method="POST">
+              {% csrf_token %}
+              <h5 style="color:white;">Enter Student Id<h5>
+              <div class="input-group mb-3" id="inputs" style="width:300px;height:35px">
+                <input type="text" style="width:300px;height:35px;border-radius:50px;padding:20px;" class="form-control"  aria-label="Default" aria-describedby="inputGroup-sizing-default" value="" name="enrollment"  maxlength="4" minlength="4" pattern="[0-9]+" autocomplete="off" required>
+              </div>
+                <button type="submit" style="width:300px;height:45px;margin-top:10px;background-image:linear-gradient(#92fe9d,#00c9ff);" class="btn btn-success" data-dismiss="modal" style="width:790px; font-family: ;letter-spacing: 1px;" onclick="insert_student()"><h5 style="margin-top:4px;">Submit</h5></button>
+          </form>
+          <br><br><br>
+          <!-- for show all student id available in database -->
+         <button type="submit" class="btn btn-success" data-dismiss="modal" style="width:300px;height:45px;background-image:linear-gradient(#92fe9d,#00c9ff);"
+         data-bs-toggle="modal" data-bs-target="#ShowIdModal">
+          Show Available Id</button>
+          <br>
+          <h4 style="color:white;">Total {{counts}} id is available</h4><br>
+          <form action="delete_student" method="POST" style="height:20px">
+            {% csrf_token %}
+         <button type="submit" class="btn btn-danger" data-dismiss="modal" style="width:300px;height:45px;background-image:linear-gradient(#ffb199,#ff0844);" onclick="delete_student()">Delete Student Id</button>
+          </form><br>
+          
+          </td>
+
+          <td scope="col" align="center"> 
+            <h5 style="color:white">DELETE DATA</h5>
+          </td>
+        </tr>
+      
+      <tr align="center">
+
+        <td scope="col"> 
+          <form action="imca1total" method="POST" style="height:20px">
+            {% csrf_token %}
+              <button type="submit" class="btn btn-primary" data-dismiss="modal" style="width:240px;">IMCA1</button>
+          </form>
+        </td>
+
+          <td scope="col"> 
+            <form action="delete_dbs_ic1" method="POST" style="height:20px">
+              {% csrf_token %}
+           <button type="submit" class="btn btn-danger" data-dismiss="modal" style="width:240px;background-image:linear-gradient(#ffb199,#ff0844);" onclick="delete_dbs()">Delete IMCA1</button>
+            </form>
+          </td>
+
+      </tr>
+
+      <tr align="center">
+
+        <td scope="col"> 
+          <form action="imca2total" method="POST" style="height:20px">
+            {% csrf_token %}
+              <button type="submit" class="btn btn-primary" data-dismiss="modal" style="width:240px">IMCA2</button>
+          </form>
+        </td>
+
+          <td scope="col"> 
+            <form action="delete_dbs_ic2" method="POST" style="height:20px">
+              {% csrf_token %}
+           <button type="submit" class="btn btn-danger" data-dismiss="modal" style="width:240px;background-image:linear-gradient(#ffb199,#ff0844);" onclick="delete_dbs()">Delete IMCA2</button>
+            </form>
+          </td>
+
+      </tr>
+
+      <tr align="center">
+
+        <td scope="col"> 
+          <form action="imca3total" method="POST" style="height:20px">
+            {% csrf_token %}
+         <button type="submit" class="btn btn-primary" data-dismiss="modal" style="width:240px">IMCA3</button>
+          </form>
+        </td>
+      
+        <td scope="col"> 
+          <form action="delete_dbs_ic3" method="POST" style="height:20px">
+            {% csrf_token %}
+         <button type="submit" class="btn btn-danger" data-dismiss="modal" style="width:240px;background-image:linear-gradient(#ffb199,#ff0844);" onclick="delete_dbs()">Delete IMCA3</button>
+          </form>
+        </td>
+
+      </tr>
+
+      <tr align="center">
+        
+        <td scope="col"> 
+          <form action="imca4total" method="POST" style="height:20px">
+            {% csrf_token %}
+         <button type="submit" class="btn btn-primary" data-dismiss="modal" style="width:240px">IMCA4</button>
+          </form>
+        </td>
+      
+        <td scope="col"> 
+          <form action="delete_dbs_ic4" method="POST" style="height:20px">
+            {% csrf_token %}
+         <button type="submit" class="btn btn-danger" data-dismiss="modal" style="width:240px;background-image:linear-gradient(#ffb199,#ff0844);" onclick="delete_dbs()">Delete IMCA4</button>
+          </form>
+        </td>
+
+      </tr>
+
+      <tr align="center">
+        
+        <td scope="col"> 
+          <form action="imca5total" method="POST" style="height:20px">
+            {% csrf_token %}
+         <button type="submit" class="btn btn-primary" data-dismiss="modal" style="width:240px">IMCA5</button>
+          </form>
+        </td>
+      
+        <td scope="col"> 
+          <form action="delete_dbs_ic5" method="POST" style="height:20px">
+            {% csrf_token %}
+         <button type="submit" class="btn btn-danger" data-dismiss="modal" style="width:240px;background-image:linear-gradient(#ffb199,#ff0844);" onclick="delete_dbs()">Delete IMCA5</button>
+          </form>
+        </td>
+
+      </tr>
+
+      <tr align="center">
+        
+        <td scope="col"> 
+          <form action="imca6total" method="POST" style="height:20px">
+            {% csrf_token %}
+         <button type="submit" class="btn btn-primary" data-dismiss="modal" style="width:240px">IMCA6</button>
+          </form>
+        </td>
+      
+        <td scope="col"> 
+          <form action="delete_dbs_ic6" method="POST" style="height:20px">
+            {% csrf_token %}
+         <button type="submit" class="btn btn-danger" data-dismiss="modal" style="width:240px;background-image:linear-gradient(#ffb199,#ff0844);" onclick="delete_dbs()">Delete IMCA6</button>
+          </form>
+        </td>
+
+      </tr>
+
+      <tr align="center">
+        
+        <td scope="col"> 
+          <form action="imca7total" method="POST" style="height:20px">
+            {% csrf_token %}
+         <button type="submit" class="btn btn-primary" data-dismiss="modal" style="width:240px">IMCA7</button>
+          </form>
+        </td>
+      
+        <td scope="col"> 
+          <form action="delete_dbs_ic7" method="POST" style="height:20px">
+            {% csrf_token %}
+         <button type="submit" class="btn btn-danger" data-dismiss="modal" style="width:240px;background-image:linear-gradient(#ffb199,#ff0844);" onclick="delete_dbs()">Delete IMCA7</button>
+          </form>
+        </td>
+
+      </tr>
+
+      <tr align="center">
+        
+        <td scope="col"> 
+          <form action="imca8total" method="POST" style="height:20px">
+            {% csrf_token %}
+         <button type="submit" class="btn btn-primary" data-dismiss="modal" style="width:240px">IMCA8</button>
+          </form>
+        </td>
+      
+        <td scope="col"> 
+          <form action="delete_dbs_ic8" method="POST" style="height:20px">
+            {% csrf_token %}
+         <button type="submit" class="btn btn-danger" data-dismiss="modal" style="width:240px;background-image:linear-gradient(#ffb199,#ff0844);" onclick="delete_dbs()">Delete IMCA8</button>
+          </form>
+        </td>
+
+      </tr>
+
+      <tr align="center">
+        
+        <td scope="col"> 
+          <form action="imca9total" method="POST" style="height:20px">
+            {% csrf_token %}
+         <button type="submit" class="btn btn-primary" data-dismiss="modal" style="width:240px">IMCA9</button>
+          </form>
+        </td>
+      
+        <td scope="col"> 
+          <form action="delete_dbs_ic9" method="POST" style="height:20px">
+            {% csrf_token %}
+         <button type="submit" class="btn btn-danger" data-dismiss="modal" style="width:240px;background-image:linear-gradient(#ffb199,#ff0844);" onclick="delete_dbs()">Delete IMCA9</button>
+          </form>
+        </td>
+
+      </tr>
+
+      <tr align="center">
+        
+        <td scope="col"> 
+          <form action="imca10total" method="POST" style="height:20px">
+            {% csrf_token %}
+         <button type="submit" class="btn btn-primary" data-dismiss="modal" style="width:240px">IMCA10</button>
+          </form>
+        </td>
+      
+        <td scope="col"> 
+          <form action="delete_dbs_ic10" method="POST" style="height:20px">
+            {% csrf_token %}
+         <button type="submit" class="btn btn-danger" data-dismiss="modal" style="width:240px;background-image:linear-gradient(#ffb199,#ff0844);" onclick="delete_dbs()">Delete IMCA10</button>
+          </form>
+        </td>
+
+      </tr>
+
+      <tr align="center">
+        
+        <td scope="col"> 
+          <form action="mca1total" method="POST" style="height:20px">
+            {% csrf_token %}
+         <button type="submit" class="btn btn-primary" data-dismiss="modal" style="width:240px">MCA1</button>
+          </form>
+        </td>
+      
+        <td scope="col"> 
+          <form action="delete_dbs_mca1" method="POST" style="height:20px">
+            {% csrf_token %}
+         <button type="submit" class="btn btn-danger" data-dismiss="modal" style="width:240px;background-image:linear-gradient(#ffb199,#ff0844);" onclick="delete_dbs()">Delete MCA1</button>
+          </form>
+        </td>
+
+      </tr>
+
+      <tr align="center">
+        
+        <td scope="col"> 
+          <form action="mca2total" method="POST" style="height:20px">
+            {% csrf_token %}
+         <button type="submit" class="btn btn-primary" data-dismiss="modal" style="width:240px">MCA2</button>
+          </form>
+        </td>
+      
+        <td scope="col"> 
+          <form action="delete_dbs_mca2" method="POST" style="height:20px">
+            {% csrf_token %}
+         <button type="submit" class="btn btn-danger" data-dismiss="modal" style="width:240px;background-image:linear-gradient(#ffb199,#ff0844);" onclick="delete_dbs()">Delete MCA2</button>
+          </form>
+        </td>
+
+      </tr>
+
+      <tr align="center">
+        
+        <td scope="col"> 
+          <form action="mca3total" method="POST" style="height:20px">
+            {% csrf_token %}
+         <button type="submit" class="btn btn-primary" data-dismiss="modal" style="width:240px">MCA3</button>
+          </form>
+        </td>
+      
+        <td scope="col"> 
+          <form action="delete_dbs_mca3" method="POST" style="height:20px">
+            {% csrf_token %}
+         <button type="submit" class="btn btn-danger" data-dismiss="modal" style="width:240px;background-image:linear-gradient(#ffb199,#ff0844);" onclick="delete_dbs()">Delete MCA3</button>
+          </form>
+        </td>
+
+      </tr>
+
+      <tr align="center">
+        
+        <td scope="col"> 
+          <form action="mca4total" method="POST" style="height:20px">
+            {% csrf_token %}
+         <button type="submit" class="btn btn-primary" data-dismiss="modal" style="width:240px;">MCA4</button>
+          </form>
+        </td>
+      
+        <td scope="col"> 
+          <form action="delete_dbs_mca4" method="POST" style="height:20px">
+            {% csrf_token %}
+         <button type="submit" class="btn btn-danger" data-dismiss="modal" style="width:240px;background-image:linear-gradient(#ffb199,#ff0844);" onclick="delete_dbs()">Delete MCA4</button>
+          </form>
+        </td>
+
+      </tr>
+    
+
+    </tbody>
+  </table>
+</div>
+
+<!-- For Footer -->
+<!-- Remove the container if you want to extend the Footer to full width. -->
+<div >
+  <!-- Footer -->
+  <footer class="text-center text-white" style="font-family:candara;font-size:26px">
+    <!-- Copyright -->
+    <div class="text-center p-4" style="letter-spacing:1px;">
+      ©2022 Copyright :
+      <a class="text-white" href="developer" style="text-decoration: none;letter-spacing:1px;">Hasmukh & Anil</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+</div>
+
+<!--show id Toggle -->
+<div class="modal fade" id="ShowIdModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index:11000 ; position: fixed; height: 500px; width: 300px; margin-left: 40%; margin-top: 10%;">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Students Id</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-hover">
+          {% for student in students %}
+          <tr>
+            <td scope="col" align="center">{{student.enrollment}}</td>
+          </tr>
+          {% endfor %}
+        </table>
+    </div>
+  </div>
+</div>
+</div>
+
+</body>
+
+<!--script type="text/javascript">
+
+  function noBack()
+  {
+      window.history.forward()
+  }
+ noBack();
+ window.onload = noBack;
+ window.onpageshow = function(evt) { if (evt.persisted) noBack() }
+ window.onunload = function() { void (1) }
+</script-->
+
+<script type="text/javascript">
+
+function delete_dbs(){
+  alert("Your Data is Deleted Successfully!!!")
+}
+function delete_student(){
+  alert("Student Data is Deleted Successfully!!!")
+}
+function insert_student(){
+  alert("Student Data is Inserted Successfully!!!")
+}
+function change_password(){
+  alert("Your Password is Change Successfully!!!")
+}
+function myFunction(){
+  var x = document.getElementById("myinput");
+  if(x.type === "password"){
+    x.type = "text";
+  }
+  else{
+    x.type = "password";
+  }
+}
+
+</script>
+</html>

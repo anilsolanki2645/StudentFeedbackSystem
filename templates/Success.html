@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <title>SUCCESS</title>
+        
+    </head>
+    <body style=" max-width: 100%; overflow-x: hidden;">
+        
+        <h1 align="center" style="margin-top:300px;color:#2ECC71">Your Feedback is Submitted Successfully </h1>
+        
+    </body>
+
+    <!--script tag back button to refresh the page-->
+    <script type="text/javascript">
+
+        function noBack()
+               {
+                   window.history.forward()
+               }
+              noBack();
+              window.onload = noBack;
+              window.onpageshow = function(evt) { if (evt.persisted) noBack() }
+              window.onunload = function() { void (0) }
+
+              setTimeout(function(){
+                window.location.replace("/")
+              }, 2000);
+      
+      </script>
+
+</html>

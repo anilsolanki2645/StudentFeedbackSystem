@@ -1,0 +1,386 @@
+<!--DOCTYPE html-->
+<!-- IMCA5 Feedback Form -->
+{% load static %}
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>IMCA5 Total</title>
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">  
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        
+        <style type="text/css">
+        </style>
+    </head>
+    <body style=" max-width: 100%; overflow-x: hidden;">
+
+      
+        <!--Feedback Table-->
+      <div>
+
+        <table class="table table-hover">
+          <thead align="center">
+            <tr>
+              <th scope="col" colspan="8"><h2>PATEL GROUP OF INSTITUTION<h2></th>
+            </tr>
+            <tr>
+              <th scope="col" colspan="8"><h4>ACADAMIC FEEDBACK FORM-ODD SEM</h4></th>
+            </tr>
+            <tr>
+              <th scope="col" colspan="8"><h6>IMCA-5 SEMESTER</h6></th>
+            </tr>
+          </thead>
+
+          <tbody align="center">
+            <!--Start Student Feedback Form-->
+            
+              <tr>
+                <th scope="col" colspan="8"><h6>FACULTY DETAILS</h6></th>
+              </tr>
+
+              <tr>
+                <th scope="col" colspan="8"><h6 style="color:#2ECC71;">Total Attend Students : {{count_ic5}}</h6></th>
+              </tr>
+
+              <tr>
+                {% for lec in sub %}
+                <th scope="col" colspan="2">Faculty-Subject-Code</th>
+                <th scope="col">{{lec.subject1}}</th>
+                <th scope="col">{{lec.subject2}}</th>
+                <th scope="col">{{lec.subject3}}</th>
+                <th scope="col">{{lec.subject4}}</th>
+                <th scope="col">{{lec.subject5}}</th>
+                <th scope="col" style="color:#800000;font-weight:bold">Total</th>
+                {% endfor %}
+              </tr>
+
+              <tr>
+                {% for fname in faculty_name_ic5 %}
+                <th scope="col">SrNo.</th>
+                <th scope="col">Parameters/Faculty</th>
+                <th scope="col">{{fname.subject1}}</th>
+                <th scope="col">{{fname.subject2}}</th>
+                <th scope="col">{{fname.subject3}}</th>
+                <th scope="col">{{fname.subject4}}</th>
+                <th scope="col">{{fname.subject5}}</th>
+                <th scope="col"></th>
+                {% endfor %}
+              </tr>
+
+              <!--Punctuality & Regularity-->
+              <tr>
+                <td scope="col">1</td>
+                <td scope="col">Punctuality & Regularity</td>
+                <td scope="col">
+                 <h5>{{additionpr_2658601.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionpr_2658602.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionpr_2658603.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionpr_2658604.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionpr_2658605.total}}</h5>
+                </td>
+
+                <td scope="col" style="color:#800000">
+                    <h5>{{totalpr_ic5}}</h5>
+                </td>
+
+              </tr>
+
+              <!--Power Of Explanation-->
+              <tr>
+                <td scope="col">2</td>
+                <td scope="col">Power Of Explanation</td>
+                <td scope="col">
+                    <h5>{{additionpe_2658601.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionpe_2658602.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionpe_2658603.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionpe_2658604.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionpe_2658605.total}}</h5>
+                </td>
+
+                <td scope="col" style="color:#800000">
+                    <h5>{{totalpe_ic5}}</h5>
+                </td>
+
+              </tr>
+
+              <!--Subject Knowledge-->
+              <tr>
+                <td scope="col">3</td>
+                <td scope="col">Subject Knowledge</td>
+                <td scope="col">
+                    <h5>{{additionsk_2658601.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionsk_2658602.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionsk_2658603.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionsk_2658604.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionsk_2658605.total}}</h5>
+                </td>
+
+                <td scope="col" style="color:#800000">
+                    <h5>{{totalsk_ic5}}</h5>
+                </td>
+
+              </tr>
+
+              <!--Method Of Teaching-->
+              <tr>
+                <td scope="col">4</td>
+                <td scope="col">Method Of Teaching</td>
+                <td scope="col">
+                    <h5>{{additionmt_2658601.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionmt_2658602.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionmt_2658603.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionmt_2658604.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionmt_2658605.total}}</h5>
+                </td>
+
+                <td scope="col" style="color:#800000">
+                    <h5>{{totalmt_ic5}}</h5>
+                </td>
+
+              </tr>
+
+              <!--Motivation Of Subject-->
+              <tr>
+                <td scope="col">5</td>
+                <td scope="col">Motivation Of Subject</td>
+                <td scope="col">
+                    <h5>{{additionms_2658601.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionms_2658602.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionms_2658603.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionms_2658604.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionms_2658605.total}}</h5>
+                </td>
+
+                <td scope="col" style="color:#800000">
+                    <h5>{{totalms_ic5}}</h5>
+                </td>
+
+              </tr>
+
+              <!--Professionalisam/Attitude-->
+              <tr>
+                <td scope="col">6</td>
+                <td scope="col">Professionalisam/Attitude</td>
+                <td scope="col">
+                    <h5>{{additionpa_2658601.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionpa_2658602.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionpa_2658603.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionpa_2658604.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionpa_2658605.total}}</h5>
+                </td>
+
+                <td scope="col" style="color:#800000">
+                    <h5>{{totalpa_ic5}}</h5>
+                </td>
+
+              </tr>
+
+              <!--Complition Of Syllabus-->
+              <tr>
+                <td scope="col">7</td>
+                <td scope="col">Complition Of Syllabus</td>
+                <td scope="col">
+                    <h5>{{additioncs_2658601.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additioncs_2658602.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additioncs_2658603.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additioncs_2658604.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additioncs_2658605.total}}</h5>
+                </td>
+
+                <td scope="col" style="color:#800000">
+                    <h5>{{totalcs_ic5}}</h5>
+                </td>
+
+              </tr>
+
+              <!--Paper Solution-->
+              <tr>
+                <td scope="col">8</td>
+                <td scope="col">Paper Solution</td>
+                <td scope="col">
+                    <h5>{{additionps_2658601.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionps_2658602.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionps_2658603.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionps_2658604.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{additionps_2658605.total}}</h5>
+                </td>
+
+                <td scope="col" style="color:#800000">
+                    <h5>{{totalps_ic5}}</h5>
+                </td>
+
+              </tr>
+
+              <!--Total-->
+              <tr style="color:#800000;font-weight:bold;font-size:20px">
+                <td scope="col">9</td>
+                <td scope="col">Total</td>
+                <td scope="col">
+                    <h5>{{total_2658601.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{total_2658602.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{total_2658603.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{total_2658604.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{total_2658605.total}}</h5>
+                </td>
+
+                <td scope="col">
+                    <h5>{{all_total_ic5}}</h5>
+                </td>
+
+              </tr>
+   
+              <tr align="center">
+                <td scope="col">
+                </td>
+                <td scope="col">
+                </td>
+                <td scope="col"> 
+                  <form action="ic5report2658601" method="POST">
+                    {% csrf_token %}
+                 <button type="submit" class="btn btn-primary" data-dismiss="modal" style="width:170px"  name="report">Generate Report</button>
+                  </form>
+                </td>
+                <td scope="col"> 
+                    <form action="ic5report2658602" method="POST">
+                        {% csrf_token %}
+                   <button type="submit" class="btn btn-primary" data-dismiss="modal" style="width:170px"  name="report">Generate Report</button>
+                    </form>
+                  </td>
+                  <td scope="col"> 
+                    <form action="ic5report2658603" method="POST">
+                        {% csrf_token %}
+                   <button type="submit" class="btn btn-primary" data-dismiss="modal" style="width:170px"  name="report">Generate Report</button>
+                    </form>
+                  </td>
+                  <td scope="col"> 
+                    <form action="ic5report2658604" method="POST">
+                        {% csrf_token %}
+                   <button type="submit" class="btn btn-primary" data-dismiss="modal" style="width:170px"  name="report">Generate Report</button>
+                    </form>
+                  </td>
+                  <td scope="col"> 
+                    <form action="ic5report2658605" method="POST">
+                        {% csrf_token %}
+                   <button type="submit" class="btn btn-primary" data-dismiss="modal" style="width:170px"  name="report">Generate Report</button>
+                    </form>
+                  </td>
+
+                  <td scope="col">
+                </td>
+
+              </tr>
+
+          </tbody>
+
+        </table>
+          
+      </div>
+    </body>
+</html>

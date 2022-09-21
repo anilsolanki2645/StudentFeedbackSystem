@@ -1,0 +1,55 @@
+{% load static %}
+<html>
+  <head>
+    <title>Developer</title>
+
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">  
+    <script src="{% static 'js/bootstrap.min.js' %}"></script> 
+
+    <style type="text/css">
+      #anil
+      {
+        transition: 1s;
+        box-shadow: 1px 1px 10px grey;
+        border-radius:50px;
+      }
+      #anil:hover
+      {
+        width: 170px;
+        height: 178px;
+      
+      }
+
+    </style>
+
+  </head>
+
+  <body style=" max-width: 100%; overflow-x: hidden;">
+    <div class="row" align="center" style="margin-top:150px;margin-left:270px;" height="500px">
+        <div class="col-sm-4" height="500px" style="box-shadow: 5px 10px 20px grey;border-radius:50px;">
+            <div class="ee" style="width:200px;height:400px;">
+                <br>
+                <img class="card-img-top" id="anil" src="{% static 'image/Anil.png' %}" alt="Card image cap" height="200px" width="80px" style="border-radius:50%;">
+                <div class="card-body" style="height:100px;" height="400px">
+                    <br>
+                  <strong class="card-text" style="font-size:23px;">Anil Solanki</strong><br>
+                  <div class="card-text" style="font-size:18px;">9558322778</div>
+                  <div class="card-text" style="font-size:15px;">anilsolanki1834@gmail.com</div>
+                </div>
+              </div>
+        </div>
+        <div class="col-sm-4" height="500px" style="box-shadow: 5px 10px 20px grey;border-radius:50px;margin-left:100px;">
+            <div class="" style="width:200px;height:400px">
+                <br>
+                <img class="card-img-top" src="{% static 'image/hasmukh.png' %}" alt="Card image cap" id="anil"height="200px" width="80px" style="border-radius:50%;">
+                <div class="card-body" style="height:100px;" height="400px">
+                    <br>
+                  <strong class="card-text" style="font-size:20px;">Hasmukh Makvana</strong><br>
+                  <div class="card-text" style="font-size:18px;">9879453816</div>
+                  <div class="card-text" style="font-size:15px;">makvanahasmukh27@gmail.com</div>
+                </div>
+              </div>
+        </div>
+      </div>
+  </body>
+</html>
